@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>10 Comandaments</title>
+  </head>
+  <body>
+    <h1>Lista Link</h1>
+	<ul>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Derieri">Derieri</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Grayroad">Grayroad</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Galand">Galand</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Gloxinia">Gloxinia</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Drole">Drole</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Mael">Estrarossa</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Melascula">Melascula</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Monspeet">Monspeet</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Zeldris">Zeldris</a></li>
+		<li><a href="https://nanatsu-no-taizai.fandom.com/wiki/Fraudrin">Fraudrin</a></li>
+	</ul>
+  </body>
+</html>
