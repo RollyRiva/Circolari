@@ -11,6 +11,34 @@ public class Parser {
     public Parser() {
         docenti = new ArrayList();
     }
+    
+    public List parseDocument1(String filename,String day)
+            throws ParserConfigurationException, SAXException, IOException {
+        DocumentBuilderFactory factory;
+        DocumentBuilder builder;
+        Document document;
+        Element root, element;
+        NodeList nodeTr;
+        
+        // creazione dell’albero DOM dal documento XML
+        factory = DocumentBuilderFactory.newInstance();
+        builder = factory.newDocumentBuilder();
+        document = builder.parse(filename);
+        root = document.getDocumentElement();
+        // generazione della lista degli elementi "libro"
+        nodeTr = root.getElementsByTagName("tr");
+        if (nodeTr != null && nodeTr.getLength() > 0) {
+            for (int i = 2; i < nodeTr.getLength(); i++) {
+                element = (Element)nodeTr.item(i);
+                Docente doc = getDocente(element);
+                if(!doc.getId().equals("157")&&doc!=null&&doc.getRicevimento().equals(day)){
+                    docenti.add(doc);
+                }                                
+            }
+        }
+        return docenti;
+    }
+
 
     public List parseDocument(String filename)
             throws ParserConfigurationException, SAXException, IOException {
@@ -28,7 +56,7 @@ public class Parser {
         // generazione della lista degli elementi "libro"
         nodeTr = root.getElementsByTagName("tr");
         if (nodeTr != null && nodeTr.getLength() > 0) {
-            for (int i = 0; i < nodeTr.getLength(); i++) {
+            for (int i = 2; i < nodeTr.getLength(); i++) {
                 element = (Element)nodeTr.item(i);
                 Docente doc = getDocente(element);
                 if(doc!=null){
@@ -40,19 +68,39 @@ public class Parser {
     }
 
     private Docente getDocente(Element element) {
-        Docente d;
+        Docente d=new Docente();
         NodeList nodeTd;
+        int k=1;
         nodeTd=element.getElementsByTagName("td");
         if (nodeTd != null && nodeTd.getLength() > 0) {
-            String nome=getTextValue((Element)nodeTd.item(1));
-            String data=getTextValue((Element)nodeTd.item(2));
-            d = new Docente(nome,data);
-            return d;
+            for(int i=0;i<=nodeTd.getLength();i++){
+               String albino=getTextValue((Element)nodeTd.item(i));
+               if(albino!=null){
+                  switch(k){
+                      case 1:
+                          d.setId(albino);                        
+                          break;
+                      case 2:
+                          d.setNome_cognome(albino);                        
+                          break;
+                      case 3:
+                          d.setRicevimento(albino);                        
+                          break;
+                      case 4:
+                          d.setClasse(albino);                        
+                          break;
+                      case 5:
+                          d.setLotto(albino);                        
+                          break;                          
+                  }
+                  k++;
+               } 
+            }
         }
         else{
             return null;
-        }
-        
+        }  
+        return d;      
     }
     
     // restituisce il valore testuale dell’elemento figlio specificato

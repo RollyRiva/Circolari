@@ -5,6 +5,7 @@
  */
 
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -22,11 +23,15 @@ public class Main{
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Scanner scanner=new Scanner(System.in);
+        System.err.println("inserisci giorno");
+        String day=scanner.next();
+        day=Normalizer.normalize(day, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "ì");
         String patheth="Circolari.xml";
         List docenti = null;
         Parser dom = new Parser();
         try {
-            docenti = dom.parseDocument(patheth);
+            docenti = dom.parseDocument1(patheth,day);
         } catch (ParserConfigurationException | SAXException | IOException exception) {
             System.out.println("Errore!");
         }
